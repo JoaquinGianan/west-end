@@ -20,5 +20,5 @@ npm install #to get the rest of the dependencies
 
 
 
-
-now we have to create a docker image.  and check ec2.
+changed api.py to make the printouts more readable
+changed app.js to print the sample data as well
