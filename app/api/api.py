@@ -45,7 +45,6 @@ def predi(sample):
     """
     predi function: takes a sample network interaction in the form of a dataframe and 
     retuns string with the prediction of the network event.
-    
     """
     model_name = "model_xgbc_03.joblib"
     
@@ -68,12 +67,12 @@ def predi(sample):
     result_sample = results_dict[model.predict(sample)[0]]
 
     results_dict_com =    {
-                        'Blackhole': 'ATTACK ALLERT ---Blackhole: An attack that targets network switches/routers to discard the packets that pass through, instead of relaying them on to the next hop',
-                        'Diversion': 'ATTACK ALLERT ---Traffic Diversion: A attack that targets network switches/routers to reroute the direction of packets away from their destination, intending to increase travel time and/or spying on network traffic through a man-in-the-middle scenario',
+                        'Blackhole': 'Blackhole ATTACK ALLERT ---Port :XXXX in [xx] is under a Blackhole attack. An attack that targets network switches/routers to discard the packets that pass through, instead of relaying them on to the next hop.',
+                        'Diversion': 'Traffic Diversion ATTACK ALLERT ---Port :XXXX in [xx] is under a Traffic Diversion attack. An attack that targets network switches/routers to reroute the direction of packets away from their destination, intending to increase travel time and/or spying on network traffic through a man-in-the-middle scenario.',
                         'Normal': 'Normal network behavior',
-                        'Overflow': 'ATTACK ALLERT ---Flow Table Overflow: An attack that targets network switches/routers where attacks compromise the functionality of a switch/router by consuming the flow tables that forward packets with illegitimate flow entries and rules so that legitimate flow entries and rules cannot be installed',
-                        'PortScan': 'ATTACK ALLERT ---Port scan: An attack in which attackers scan available ports on a host device to learn information about the services, versions, and even security mechanisms that are running on that host. ',
-                        'TCP-SYN': 'ATTACK ALLERT --- Port :XXXX in [xx] is under a TCP-SYN Flood attack. This is a Distributed Denial of Service (DDoS) attack where attackers target hosts by initiating many Transmission Control Protocol (TCP) handshake processes without waiting for the response from the target node. By doing so, the target device\'s resources are consumed as it has to keep allocating some memory space for every new TCP request'
+                        'Overflow': 'Flow Table Overflow ATTACK ALLERT --- Port :XXXX in [xx] is under a Flow Table Overflow attack. An attack that targets network switches/routers where attacks compromise the functionality of a switch/router by consuming the flow tables that forward packets with illegitimate flow entries and rules so that legitimate flow entries and rules cannot be installed.',
+                        'PortScan': 'Port Scan ATTACK ALLERT ---Port :XXXX in [xx] is under a Port Scan attack. An attack in which attackers scan available ports on a host device to learn information about the services, versions, and even security mechanisms that are running on that host.',
+                        'TCP-SYN': 'TCP-SYN Flood ATTACK ALLERT --- Port :XXXX in [xx] is under a TCP-SYN Flood attack. This is a Distributed Denial of Service (DDoS) attack where attackers target hosts by initiating many Transmission Control Protocol (TCP) handshake processes without waiting for the response from the target node. By doing so, the target device\'s resources are consumed as it has to keep allocating some memory space for every new TCP request.'
                         }
     result_total = results_dict_com[result_sample]
 
@@ -90,7 +89,7 @@ def all_in_prediction():
     prediction = predi(sample)
 
     sample_dict = sample.to_dict(orient="list") # to avoid showing the index
-    response = {"prediction": prediction, "id": id, "sample": sample_dict}
+    response = {"prediction": prediction, "id": id, "sample": str(sample_dict)}
     print("[+] results {}".format(response))
 
     return response

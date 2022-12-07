@@ -26,8 +26,10 @@ function App() {
  
   return (
     <div className="App">
-      <h1> {initialData.prediction}</h1>    
-      
+      <h1> {initialData.prediction}  </h1> 
+          {"Port Statistics: "}
+          {initialData.sample}
+
         {/* <h4>'Received Packets' : {initialData.sample['Received Packets'][initialData.id]}</h4>
          <h4>'Received Bytes' : {initialData.sample['Received Bytes'][initialData.id]}</h4>
          <h4>'Sent Bytes' : {initialData.sample['Sent Bytes'][initialData.id]}</h4>
@@ -47,6 +49,8 @@ function App() {
     
 
       </div>
+
+      
 
   );
 }
